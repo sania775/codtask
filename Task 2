@@ -1,0 +1,61 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class StudentGradeTracker {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        List<Double> grades = new ArrayList<>();
+
+        System.out.println("Welcome to Student Grade Tracker!");
+
+        while (true) {
+            System.out.println("\nSelect an option:");
+            System.out.println("1. Add a grade");
+            System.out.println("2. Calculate average grade");
+            System.out.println("3. Display overall grade");
+            System.out.println("4. Exit");
+
+            int option = scanner.nextInt();
+
+            switch (option) {
+                case 1:
+                    System.out.println("Enter the grade:");
+                    double grade = scanner.nextDouble();
+                    grades.add(grade);
+                    break;
+                case 2:
+                    if (grades.isEmpty()) {
+                        System.out.println("No grades added yet.");
+                    } else {
+                        double sum = 0;
+                        for (double g : grades) {
+                            sum += g;
+                        }
+                        double average = sum / grades.size();
+                        System.out.println("Average grade: " + average);
+                    }
+                    break;
+                case 3:
+                    if (grades.isEmpty()) {
+                        System.out.println("No grades added yet.");
+                    } else {
+                        double sum = 0;
+                        for (double g : grades) {
+                            sum += g;
+                        }
+                        double overallGrade = sum / grades.size();
+                        System.out.println("Overall grade: " + overallGrade);
+                        // Additional information such as letter grade or GPA can be added here
+                    }
+                    break;
+                case 4:
+                    System.out.println("Exiting...");
+                    return;
+                default:
+                    System.out.println("Invalid option. Please try again.");
+                    break;
+            }
+        }
+    }
+}
